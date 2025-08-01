@@ -21,24 +21,18 @@ This documentation is built with [Docusaurus](https://docusaurus.io/) and covers
 - **[Core Concepts](docs/core-concepts/)** - Understand DiscomfortPorts and Context
 
 ### Tutorials
-- **[Basic Tutorial](docs/tutorial-basics/)** - Create your first Discomfort workflow
-- **[Advanced Tutorial](docs/tutorial-advanced/)** - Complex workflows and techniques
+- **[Basic Tutorial](docs/tutorial-basics/create-first-workflow.md)** - Create your first Discomfort workflow
+- **[Core Concepts](docs/core-concepts/ports-and-context.md)** - Understanding DiscomfortPorts and Context
 
 ### Examples
 - **[Parameter Sweep](docs/examples/parameter-sweep.md)** - Systematic parameter testing
-- **[img2img Pipeline](docs/examples/)** - Advanced image processing workflows
-- **[Model Comparison](docs/examples/)** - Automated model testing
 
 ### API Reference
 - **[Discomfort Class](docs/api/discomfort-class.md)** - Main API reference
-- **[WorkflowTools](docs/api/)** - Utility functions
-- **[WorkflowContext](docs/api/)** - Data management
-- **[Nodes](docs/api/)** - DiscomfortPort and internal nodes
-
-### Configuration & Guides
-- **[Configuration](docs/configuration/)** - Settings and customization
-- **[Troubleshooting](docs/guides/)** - Common issues and solutions
-- **[Best Practices](docs/guides/)** - Optimal usage patterns
+- **[WorkflowTools](docs/api/workflow-tools.md)** - Utility functions
+- **[WorkflowContext](docs/api/workflow-context.md)** - Data management
+- **[ComfyConnector](docs/api/comfy-connector.md)** - Server management
+- **[Nodes](docs/api/nodes.md)** - DiscomfortPort and internal nodes
 
 ## 🔧 Development
 

@@ -519,4 +519,4 @@ if __name__ == "__main__":
 - **[WorkflowContext API](./workflow-context)** - Data management and persistence
 - **[ComfyConnector API](./comfy-connector)** - Server management and communication  
 - **[Discomfort Class](./discomfort-class)** - Main orchestration API
-- **[Core Concepts](../core-concepts/workflow-stitching)** - Understanding workflow composition 
+- **[Core Concepts](../core-concepts/ports-and-context)** - Understanding DiscomfortPorts and Context 

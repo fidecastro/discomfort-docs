@@ -408,19 +408,14 @@ ls -la discomfort_workflow.json
 
 Congratulations! You've created your first Discomfort workflow. Here's what to explore next:
 
-### Immediate Next Steps
-1. **[Adding More Port Types](./adding-discomfort-ports)** - Learn about different input/output types
-2. **[Context Management](./running-with-context)** - Advanced state management
-3. **[Output Handling](./handling-outputs)** - Processing and saving different output types
+### Core Concepts
+1. **[Understanding Ports and Context](../core-concepts/ports-and-context)** - Deep dive into the fundamentals
+2. **[API Reference](../api/discomfort-class)** - Explore all available methods and classes
+3. **[Workflow Tools](../api/workflow-tools)** - Learn about workflow manipulation utilities
 
-### Advanced Topics  
-1. **[Workflow Stitching](../tutorial-advanced/workflow-stitching)** - Combine multiple workflows
-2. **[Conditional Execution](../tutorial-advanced/conditional-execution)** - Branch logic based on results
-3. **[Batch Processing](../tutorial-advanced/batch-processing)** - Handle large datasets
-
-### Real Examples
+### Practical Examples
 1. **[Parameter Sweep](../examples/parameter-sweep)** - Systematic parameter exploration
-2. **[img2img Pipeline](../examples/img2img-pipeline)** - Advanced image processing
-3. **[Model Comparison](../examples/model-comparison)** - Compare different models automatically
+2. **[Installation Guide](../installation)** - Advanced installation and configuration options
+3. **[ComfyConnector API](../api/comfy-connector)** - Server management and communication
 
 Happy experimenting with Discomfort! 🚀 

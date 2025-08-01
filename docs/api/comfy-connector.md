@@ -764,4 +764,4 @@ if __name__ == "__main__":
 - **[Discomfort Class](./discomfort-class)** - Main orchestration API
 - **[WorkflowTools API](./workflow-tools)** - Workflow manipulation utilities
 - **[WorkflowContext API](./workflow-context)** - Data management and persistence
-- **[Core Concepts](../core-concepts/architecture)** - Understanding system architecture 
+- **[Core Concepts](../core-concepts/ports-and-context)** - Understanding DiscomfortPorts and Context 
