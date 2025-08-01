@@ -9,3 +9,41 @@
   height: 200px;
   width: 200px;
 }
+
+.architectureSection {
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.useCasesSection {
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.architectureSection .card,
+.useCasesSection .card {
+  height: 100%;
+  margin-bottom: 1rem;
+}
+
+.architectureSection ul {
+  margin-bottom: 0;
+}
+
+.useCasesSection .card__body {
+  padding: 1.5rem;
+}
+
+@media screen and (max-width: 996px) {
+  .architectureSection .row,
+  .useCasesSection .row {
+    gap: 1rem;
+  }
+  
+  .featureSvg {
+    height: 150px;
+    width: 150px;
+  }
+}

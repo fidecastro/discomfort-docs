@@ -2,46 +2,126 @@
 sidebar_position: 1
 ---
 
-# Tutorial Intro
+# Welcome to Discomfort
 
-Let's discover **Docusaurus in less than 5 minutes**.
+**Discomfort** is a powerful ComfyUI extension that revolutionizes how you work with AI workflows by enabling **programmatic execution with loops, conditionals, and persistent state management**.
 
-## Getting Started
+## The Problem
 
-Get started by **creating a new site**.
+ComfyUI's native execution model follows a Directed Acyclic Graph (DAG) pattern, executing nodes once in topological order. While powerful for single-pass workflows, this model doesn't natively support:
 
-Or **try Docusaurus immediately** with **[docusaurus.new](https://docusaurus.new)**.
+- 🔄 **Iterative refinement workflows**
+- ⚡ **Conditional execution paths**  
+- 💾 **State preservation across iterations**
+- 🧩 **Dynamic workflow composition**
+- 🐍 **Programmatic access and management**
 
-### What you'll need
+You spend 95% of your time building "Comfy spaghetti" instead of just creating. **What if you could just write a script that tells ComfyUI exactly what to do?**
 
-- [Node.js](https://nodejs.org/en/download/) version 16.14 or above:
-  - When installing Node.js, you are recommended to check all checkboxes related to dependencies.
+## The Solution
 
-## Generate a new site
+Discomfort addresses these limitations by introducing an execution layer on top of ComfyUI's DAG model, using:
 
-Generate a new Docusaurus site using the **classic template**.
+- **Pre-execution graph manipulation** for dynamic workflow modification
+- **Self-managed ComfyUI server** for isolated runs  
+- **Simple data store** that handles context throughout execution
+- **Intelligent pass-by-value/reference** system for different data types
 
-The classic template will automatically be added to your project after you run the command:
+## ✨ Key Features
 
-```bash
-npm init docusaurus@latest my-website classic
+### 🐍 **Loops & Conditionals**
+```python
+for i in range(10):
+    if i % 2 == 0:
+        await discomfort.run(["empty_latent.json"])
+    else:
+        await discomfort.run(["img2img.json"])
 ```
 
-You can type this command into Command Prompt, Powershell, Terminal, or any other integrated terminal of your code editor.
-
-The command also installs all necessary dependencies you need to run Docusaurus.
-
-## Start your site
-
-Run the development server:
-
-```bash
-cd my-website
-npm run start
+### 💾 **Persistent State Management**
+```python
+with discomfort.Context() as context:
+    context.save("model", my_model)  # Saved across runs
+    await discomfort.run(["workflow.json"], context=context)
+    result = context.load("output_image")
 ```
 
-The `cd` command changes the directory you're working with. In order to work with your newly created Docusaurus site, you'll need to navigate the terminal there.
+### 🧩 **Workflow Stitching**
+```python
+workflows = ["load_model.json", "process.json", "save.json"]
+stitched = discomfort.Tools.stitch_workflows(workflows)
+await discomfort.run([stitched["stitched_workflow"]])
+```
 
-The `npm run start` command builds your website locally and serves it through a development server, ready for you to view at http://localhost:3000/.
+### 🔌 **Simple Integration**
+Just add `DiscomfortPort` nodes to your existing ComfyUI workflows - no complex modifications needed!
 
-Open `docs/intro.md` (this page) and edit some lines: the site **reloads automatically** and displays your changes.
+## 🚀 Quick Start
+
+### 1. Install Discomfort
+
+```bash
+cd ComfyUI/custom_nodes
+git clone https://github.com/fidecastro/comfyui-discomfort.git discomfort
+cd discomfort
+pip install -r requirements.txt
+```
+
+### 2. Add DiscomfortPorts to Your Workflow
+
+Open any ComfyUI workflow and add `DiscomfortPort` nodes:
+- **INPUT ports**: Connect output → workflow (inject data from Python)
+- **OUTPUT ports**: Connect workflow → input (extract data to Python)  
+- Give each port a unique `unique_id`
+
+### 3. Write Your Script
+
+```python
+import asyncio
+from custom_nodes.discomfort.discomfort import Discomfort
+
+async def main():
+    discomfort = await Discomfort.create()
+    
+    with discomfort.Context() as context:
+        # Set initial parameters
+        context.save("prompt", "A beautiful landscape")
+        context.save("seed", 12345)
+        
+        # Run workflow
+        await discomfort.run(["my_workflow.json"], context=context)
+        
+        # Get results
+        result_image = context.load("output_image")
+        discomfort.Tools.save_comfy_image_to_disk(result_image, "result.png")
+    
+    await discomfort.shutdown()
+
+asyncio.run(main())
+```
+
+## 📚 What's Next?
+
+- **[Installation Guide](./installation)** - Detailed setup instructions
+- **[Basic Tutorial](./tutorial-basics/create-first-workflow)** - Create your first Discomfort workflow
+- **[Core Concepts](./core-concepts/ports-and-context)** - Understand DiscomfortPorts and Context
+- **[API Reference](./api/discomfort-class)** - Complete method documentation
+- **[Examples](./examples/parameter-sweep)** - Real-world usage patterns
+
+## 🎯 Perfect For
+
+- **🔄 Iterative refinement:** Progressively improve outputs through multiple passes
+- **🎛️ Parameter sweeps:** Test multiple configurations automatically  
+- **📊 Batch processing:** Process large datasets with custom logic
+- **🧪 A/B testing:** Compare different approaches systematically
+- **🏗️ Complex pipelines:** Build sophisticated multi-stage workflows
+
+## ⚡ Current Status
+
+Discomfort is in **alpha** but **fully operational**. Core functionality including:
+- ✅ **Discomfort Class** - Complete programmatic API
+- ✅ **Context Management** - State persistence and data handling  
+- ✅ **Workflow Stitching** - Merge multiple workflows seamlessly
+- ✅ **ComfyUI Integration** - Stable server management
+
+Ready to transform your ComfyUI workflows? [Let's get started!](./installation)
