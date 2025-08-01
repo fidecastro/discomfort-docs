@@ -19,10 +19,7 @@ function HomepageHeader() {
           width="200"
           height="200"
         />
-        <h1 className="hero__title">Discomfort</h1>
-        <p className="hero__subtitle">
-          A powerful ComfyUI extension that enables <strong>programmatic workflow execution</strong> with loops, conditionals, and state management
-        </p>
+        <h1 className="hero__title">Control ComfyUI with Python</h1>
         <div className={styles.buttons}>
           <Link
             className="button button--secondary button--lg"

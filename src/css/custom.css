@@ -6,7 +6,7 @@
 
 /* You can override the default Infima variables here. */
 :root {
-  --ifm-color-primary: #8b5cf6;
+  --ifm-color-primary: #5e38b5;
   --ifm-color-primary-dark: #7c3aed;
   --ifm-color-primary-darker: #7c3aed;
   --ifm-color-primary-darkest: #6d28d9;
@@ -27,6 +27,18 @@
   --ifm-hero-background-color: #1b1b1d;
   --ifm-menu-color-background-active: rgba(139, 92, 246, 0.1);
   --ifm-menu-color-background-hover: rgba(139, 92, 246, 0.05);
+}
+
+/* Hero subtitle styling */
+.hero__subtitle {
+  background-color: var(--ifm-background-surface-color) !important;
+  color: #ffffff !important;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  margin: 1rem auto;
+  max-width: 800px;
+  display: inline-block;
+  line-height: 1.5;
 }
 
 /* Light mode as alternative */
