@@ -54,7 +54,7 @@ const config = {
       image: 'img/discomfort-social-card.jpg',
       colorMode: {
         defaultMode: 'dark',
-        disableSwitch: false,
+        disableSwitch: true,
         respectPrefersColorScheme: false,
       },
       navbar: {

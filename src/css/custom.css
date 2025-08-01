@@ -47,14 +47,7 @@
   background: var(--ifm-background-color) !important;
 }
 
-/* Light mode as alternative */
-[data-theme='light'] {
-  --ifm-color-primary: #7c3aed;
-  --ifm-color-primary-dark: #6d28d9;
-  --ifm-color-primary-darker: #5b21b6;
-  --ifm-color-primary-darkest: #4c1d95;
-  --ifm-color-primary-light: #8b5cf6;
-  --ifm-color-primary-lighter: #a78bfa;
-  --ifm-color-primary-lightest: #c4b5fd;
-  --docusaurus-highlighted-code-line-bg: rgba(124, 58, 237, 0.1);
+/* Hero title styling */
+.hero__title {
+  color: #ffffff !important;
 }
