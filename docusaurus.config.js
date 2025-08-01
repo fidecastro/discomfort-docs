@@ -7,7 +7,6 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 const config = {
   title: 'Discomfort',
   tagline: 'Programmatic ComfyUI workflows with loops, conditionals, and state management',
-  favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
   url: 'https://your-docusaurus-test-site.com',
@@ -60,6 +59,11 @@ const config = {
     ({
       // Replace with your project's social card
       image: 'img/discomfort-social-card.jpg',
+      colorMode: {
+        defaultMode: 'dark',
+        disableSwitch: false,
+        respectPrefersColorScheme: false,
+      },
       navbar: {
         title: 'Discomfort',
         logo: {
