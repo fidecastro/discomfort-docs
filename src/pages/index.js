@@ -13,7 +13,7 @@ function HomepageHeader() {
     <header className={clsx('hero hero--primary', styles.heroBanner)}>
       <div className="container">
         <img 
-          src="img/logo.svg" 
+          src="img/discomfort-logo.png" 
           alt="Discomfort Logo" 
           className={styles.heroLogo}
           width="200"

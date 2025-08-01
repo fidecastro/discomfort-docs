@@ -41,13 +41,6 @@ const config = {
           editUrl:
             'https://github.com/fidecastro/comfyui-discomfort/tree/main/docs/',
         },
-        blog: {
-          showReadingTime: true,
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/fidecastro/comfyui-discomfort/tree/main/blog/',
-        },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
@@ -77,7 +70,6 @@ const config = {
             position: 'left',
             label: 'Documentation',
           },
-          {to: '/blog', label: 'Blog', position: 'left'},
           {
             href: 'https://github.com/fidecastro/comfyui-discomfort',
             label: 'GitHub',
@@ -121,10 +113,6 @@ const config = {
           {
             title: 'More',
             items: [
-              {
-                label: 'Blog',
-                to: '/blog',
-              },
               {
                 label: 'GitHub',
                 href: 'https://github.com/fidecastro/comfyui-discomfort',

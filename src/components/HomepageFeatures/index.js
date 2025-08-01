@@ -5,7 +5,6 @@ import styles from './styles.module.css';
 const FeatureList = [
   {
     title: 'Programmatic Control',
-    Svg: require('@site/static/img/discomfort-logo.png').default,
     description: (
       <>
         Take full control of ComfyUI workflows with Python. Execute workflows 
@@ -16,7 +15,6 @@ const FeatureList = [
   },
   {
     title: 'State Management',
-    Svg: require('@site/static/img/discomfort-logo.png').default,
     description: (
       <>
         Preserve data between workflow executions with automatic state management.
@@ -27,7 +25,6 @@ const FeatureList = [
   },
   {
     title: 'Workflow Composition',
-    Svg: require('@site/static/img/discomfort-logo.png').default,
     description: (
       <>
         Break free from monolithic workflows. Stitch together partial workflows,
@@ -38,12 +35,9 @@ const FeatureList = [
   },
 ];
 
-function Feature({Svg, title, description}) {
+function Feature({title, description}) {
   return (
     <div className={clsx('col col--4')}>
-      <div className="text--center">
-        <img src={Svg} className={styles.featureSvg} role="img" alt={`${title} icon`} />
-      </div>
       <div className="text--center padding-horiz--md">
         <h3>{title}</h3>
         <p>{description}</p>
