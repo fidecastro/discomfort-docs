@@ -21,9 +21,6 @@ const sidebars = {
       label: 'Core Concepts',
       items: [
         'core-concepts/ports-and-context',
-        'core-concepts/pass-by-reference',
-        'core-concepts/workflow-stitching',
-        'core-concepts/architecture',
       ],
     },
     
@@ -32,20 +29,12 @@ const sidebars = {
       label: 'Tutorial - Basics',
       items: [
         'tutorial-basics/create-first-workflow',
-        'tutorial-basics/using-context',
-        'tutorial-basics/workflow-stitching',
-        'tutorial-basics/error-handling',
-      ],
-    },
-    
-    {
-      type: 'category',
-      label: 'Tutorial - Advanced',
-      items: [
-        'tutorial-advanced/iterative-workflows',
-        'tutorial-advanced/memory-management',
-        'tutorial-advanced/custom-nodes',
-        'tutorial-advanced/performance-optimization',
+        'tutorial-basics/create-a-document',
+        'tutorial-basics/create-a-page',
+        'tutorial-basics/create-a-blog-post',
+        'tutorial-basics/markdown-features',
+        'tutorial-basics/deploy-your-site',
+        'tutorial-basics/congratulations',
       ],
     },
     
@@ -66,31 +55,15 @@ const sidebars = {
       label: 'Examples',
       items: [
         'examples/parameter-sweep',
-        'examples/batch-processing',
-        'examples/model-comparison',
-        'examples/iterative-refinement',
       ],
     },
     
     {
       type: 'category',
-      label: 'Configuration',
+      label: 'Tutorial - Extras',
       items: [
-        'configuration/server-settings',
-        'configuration/context-settings',
-        'configuration/pass-by-rules',
-        'configuration/docker-setup',
-      ],
-    },
-    
-    {
-      type: 'category',
-      label: 'Troubleshooting',
-      items: [
-        'troubleshooting/common-issues',
-        'troubleshooting/performance-problems',
-        'troubleshooting/memory-issues',
-        'troubleshooting/debug-workflows',
+        'tutorial-extras/manage-docs-versions',
+        'tutorial-extras/translate-your-site',
       ],
     },
   ],
