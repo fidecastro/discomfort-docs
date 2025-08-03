@@ -28,7 +28,7 @@ const sidebars = {
       type: 'category',
       label: 'Tutorial - Basics',
       items: [
-        'tutorial-basics/running-a-workflow',
+        'tutorial-basics/running-a-workflow', // Corrected line
         'tutorial-basics/using-partial-workflows',
         'tutorial-basics/a-simple-loop-on-comfy',
       ],
@@ -50,7 +50,7 @@ const sidebars = {
       type: 'category',
       label: 'Examples',
       items: [
-        'examples/create-first-workflow', // <-- This was moved
+        'examples/create-first-workflow',
         'examples/parameter-sweep',
       ],
     },
