@@ -4,6 +4,7 @@ import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import HomepageFeatures from '@site/src/components/HomepageFeatures';
+import CodeBlock from '@theme/CodeBlock';
 
 import styles from './index.module.css';
 
@@ -37,6 +38,9 @@ function HomepageHeader() {
             ❤️ Support the Project
           </Link>
         </div>
+        <div className="text--center margin-top--md">
+          <p>10x faster development of ComfyUI pipelines. MIT License.</p>
+        </div>
       </div>
     </header>
   );
@@ -50,7 +54,7 @@ function FeatureHighlight({title, description, code}) {
         </div>
         <div className="card__body">
           <p>{description}</p>
-          <pre><code>{code}</code></pre>
+          <CodeBlock language="python">{code}</CodeBlock>
         </div>
       </div>
     </div>

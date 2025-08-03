@@ -71,6 +71,13 @@ with discomfort.Context() as context:
 # Automatic cleanup happens here
 ```
 
+At any point in time, there should be two Context instances running:
+- The master instance, which holds the context for *all* runs and ensures the context is preserved across the run. It is best used as a context manager using a `with` statement that encapsulates the whole logic.
+- The worker instance, which holds the context for any single workflow run. It is created in the beginning of every workflow run. 
+
+Once created, the worker instance receives a reference to the master context (called a "receipt"), loads/saves data from it accordingly, and then finally returns the receipt back to the master before the worker instance shuts down.
+Context is passed to/from both instances by means of a `receipts.json` that is saved by an instance and subsequently loaded by the next instance handling the context.
+
 ### 🔄 Pass-by-Value vs Pass-by-Reference
 
 Discomfort intelligently handles different data types:

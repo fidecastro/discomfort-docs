@@ -150,7 +150,7 @@ Always make sure you get the `unique_id`s right when using this node; if you do 
 
 ## Internal Nodes
 
-These nodes are automatically inserted by Discomfort during workflow execution and are not meant to be manually placed.
+These nodes are automatically inserted by Discomfort during workflow execution and are not meant to be manually placed. They replace DiscomfortPorts at Discomfort's runtime, simply by changing the class of the node inside the prompt JSON that will be sent for ComfyUI processing.
 
 ### DiscomfortContextLoader
 

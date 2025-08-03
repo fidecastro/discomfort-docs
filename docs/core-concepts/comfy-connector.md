@@ -2,9 +2,9 @@
 sidebar_position: 2
 ---
 
-# ComfyConnector: The Engine Behind Discomfort
+# ComfyConnector: Serverless ComfyUI
 
-At the heart of Discomfort's execution logic is the **ComfyConnector**, a singleton class that acts as a powerful Python wrapper for the ComfyUI API. It's the engine that allows you to programmatically start, stop, and interact with ComfyUI servers. 
+At the heart of Discomfort's execution logic is the **ComfyConnector**, a singleton class that acts as a powerful Python wrapper for the ComfyUI API. Originally created to act as a wrapper for serverless ComfyUI deployments, it's the engine that allows you to programmatically start, stop, and interact with ComfyUI servers. 
 
 ## What It Does
 
@@ -18,7 +18,7 @@ ComfyConnector is designed to be a standalone utility, meaning you can use it ev
 
 ## Why It's a Core Concept
 
-Originally created to act as a wrapper for serverless ComfyUI deployments, the ComfyConnector class is what makes Discomfort's programmatic control possible. By managing the server lifecycle and providing a clean API for queuing workflows, it allows you to:
+ComfyConnector is what makes Discomfort's programmatic control possible. By managing the server lifecycle and providing a clean API for queuing workflows, it allows you to:
 
 -   **Isolate runs**: A Discomfort run will always start its own managed ComfyUI server, preventing conflicts with any ComfyUI instance being run by the user.
 -   **Automate execution**: Scripts can start a server, run a series of workflows, and then shut everything down without any manual intervention.
