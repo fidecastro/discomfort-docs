@@ -1,3 +1,7 @@
+---
+sidebar_position: 1
+---
+
 # DiscomfortPorts and Context
 
 The two foundational concepts in Discomfort are **DiscomfortPorts** and **Context**. Understanding these will help you master programmatic workflow execution.

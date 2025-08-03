@@ -21,6 +21,7 @@ const sidebars = {
       label: 'Core Concepts',
       items: [
         'core-concepts/ports-and-context',
+        'core-concepts/comfy-connector',
       ],
     },
 
