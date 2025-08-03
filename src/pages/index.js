@@ -12,9 +12,9 @@ function HomepageHeader() {
   return (
     <header className={clsx('hero hero--primary', styles.heroBanner)}>
       <div className="container">
-        <img 
-          src="img/discomfort-logo.png" 
-          alt="Discomfort Logo" 
+        <img
+          src="img/discomfort-logo.png"
+          alt="Discomfort Logo"
           className={styles.heroLogo}
           width="200"
           height="200"
@@ -30,6 +30,11 @@ function HomepageHeader() {
             className="button button--primary button--lg margin-left--md"
             to="/docs/api/discomfort-class">
             API Reference
+          </Link>
+          <Link
+            className="button button--success button--lg margin-left--md"
+            to="https://www.paypal.com/donate/?hosted_button_id=3A23MDRAT9EKY">
+            ❤️ Support the Project
           </Link>
         </div>
       </div>
