@@ -600,7 +600,7 @@ resolutions = [(512, 512), (768, 768), (1024, 1024)]
 After running your parameter sweep:
 
 1. **[Explore API Reference](../api/workflow-tools)** - Learn more workflow manipulation techniques
-2. **[Create Your First Workflow](../tutorial-basics/create-first-workflow)** - Master the basics before advanced techniques
+2. **[Create Your First Workflow](../examples/create-first-workflow)** - Master the basics before advanced techniques
 3. **[Understanding Context](../core-concepts/ports-and-context)** - Deep dive into state management
 
 The parameter sweep approach helps you make data-driven decisions about your ComfyUI workflows and find the best settings for your specific use cases! 📊✨ 

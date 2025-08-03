@@ -51,57 +51,6 @@ pip install -r requirements.txt
    - You should see `Discomfort Port (Input/Output)` node
    - You should see `Discomfort Test Runner` node
 
-3. **Test the installation** with a simple script:
-
-```python
-# test_installation.py
-import asyncio
-import sys
-import os
-
-# Add ComfyUI to path if needed
-sys.path.append('./ComfyUI')
-
-async def test_discomfort():
-    try:
-        from custom_nodes.discomfort.discomfort import Discomfort
-        
-        print("✅ Discomfort import successful")
-        
-        # Test creating instance
-        discomfort = await Discomfort.create()
-        print("✅ Discomfort instance created")
-        
-        # Test context
-        with discomfort.Context() as context:
-            context.save("test_data", "Hello Discomfort!")
-            loaded = context.load("test_data")
-            assert loaded == "Hello Discomfort!"
-            print("✅ Context management working")
-        
-        await discomfort.shutdown()
-        print("✅ All tests passed! Discomfort is ready to use.")
-        
-    except Exception as e:
-        print(f"❌ Installation test failed: {e}")
-        return False
-    
-    return True
-
-if __name__ == "__main__":
-    success = asyncio.run(test_discomfort())
-    if not success:
-        print("\n📋 Troubleshooting tips:")
-        print("1. Ensure ComfyUI is properly installed")
-        print("2. Check that all dependencies are installed")
-        print("3. Verify Python version is 3.8+")
-```
-
-Run the test:
-```bash
-python test_installation.py
-```
-
 ## Dependencies Explained
 
 Discomfort requires several Python packages for full functionality:
@@ -131,7 +80,7 @@ Discomfort comes with sensible defaults but can be customized:
 Edit `workflow_context.json`:
 ```json
 {
-    "MAX_RAM_PERCENT": 50,    // Use 50% of system RAM
+    "MAX_RAM_PERCENT": 50,    // Use 50% of free system RAM
     "MAX_RAM_GB": 32,         // Or limit to 32GB
     "CONTEXTS_DIR_NAME": "contexts"
 }
@@ -152,17 +101,25 @@ Edit `comfy_serverless.json`:
 ```
 
 ### Data Type Handling
-Edit `pass_by_rules.json` to customize how different data types are handled:
+You can edit `pass_by_rules.json` to customize how different data types are handled. The presets are as follows:
 ```json
 {
-    "MODEL": "ref",     // Models passed by reference (workflow graphs)
-    "CLIP": "ref",      // CLIP models passed by reference  
-    "VAE": "ref",       // VAE models passed by reference
-    "IMAGE": "val",     // Images passed by value (direct storage)
-    "LATENT": "val",    // Latents passed by value
-    "STRING": "val",    // Text passed by value
-    "INT": "val",       // Numbers passed by value
-    "FLOAT": "val"      // Decimals passed by value
+    "MODEL": "ref",        // Models passed by reference (workflow graphs)
+    "CLIP": "ref",         // CLIP models passed by reference  
+    "VAE": "ref",          // VAE models passed by reference
+    "CONDITIONING": "ref", // Conditioning passed by reference
+    "LATENT": "val",       // Latents passed by value (direct storage)
+    "IMAGE": "val",        // Images passed by value
+    "MASK": "val",         // Masks passed by value
+    "CONTROL_NET": "ref",  // ControlNet models passed by reference
+    "STRING": "val",       // Text passed by value
+    "INT": "val",          // Numbers passed by value
+    "FLOAT": "val",        // Decimals passed by value
+    "BOOLEAN": "val",      // Booleans passed by value
+    "TUPLE": "val",        // Tuples passed by value
+    "LIST": "val",         // Lists passed by value
+    "DICT": "val",         // Dictionaries passed by value
+    "ANY": "val"           // "ANY" type passed by value
 }
 ```
 
@@ -174,7 +131,7 @@ Edit `pass_by_rules.json` to customize how different data types are handled:
 **Solution**: Ensure the folder is named exactly `discomfort` and is in `ComfyUI/custom_nodes/`
 
 #### ❌ "playwright._impl._api_types.Error: Executable doesn't exist"
-**Solution**: Install Playwright browsers:
+**Solution**: Try installing Playwright browser directly:
 ```bash
 python -m playwright install --with-deps chromium
 ```
@@ -186,7 +143,7 @@ chmod +x ComfyUI/custom_nodes/discomfort/
 ```
 
 #### ❌ Memory errors during large workflows
-**Solution**: Reduce `MAX_RAM_PERCENT` in `workflow_context.json` or increase system RAM
+**Solution**: Try increasing RAM or switching to disk memory. If this doesn't work, it's likely the issue is at the OS level. If you're on Linux, the OS may be capping your allocated memory for temp files; run `df -H` to confirm if that's the case and increase the size of `/dev/shm` accordingly.
 
 #### ❌ ComfyUI doesn't start automatically
 **Solution**: Check `comfy_serverless.json` paths:
@@ -206,9 +163,8 @@ If you encounter issues:
 
 Now that Discomfort is installed:
 
-1. **[Create your first workflow](./tutorial-basics/create-first-workflow)** - Basic tutorial
-2. **[Learn core concepts](./core-concepts/ports-and-context)** - Understand DiscomfortPorts
-3. **[Explore examples](./examples/parameter-sweep)** - See real-world usage patterns
-4. **[Read the API reference](./api/discomfort-class)** - Detailed method documentation
-
-Ready to start building? Let's [create your first Discomfort workflow](./tutorial-basics/create-first-workflow)! 🚀 
+1. **[Watch Tutorial videos](./tutorial-basics/running-a-workflow)** - Basic tutorial
+2. **[Create your first workflow](./examples/create-first-workflow)** - Master the basics before advanced techniques
+3. **[Learn core concepts](./core-concepts/ports-and-context)** - Understand DiscomfortPorts
+4. **[Explore examples](./examples/parameter-sweep)** - See real-world usage patterns
+5. **[Read the API reference](./api/discomfort-class)** - Detailed method documentation

@@ -103,10 +103,11 @@ asyncio.run(main())
 ## 📚 What's Next?
 
 - **[Installation Guide](./installation)** - Detailed setup instructions
-- **[Basic Tutorial](./tutorial-basics/create-first-workflow)** - Create your first Discomfort workflow
+- **[Basic Tutorial](./tutorial-basics/running-a-workflow)** - 5-minute video tutorial
 - **[Core Concepts](./core-concepts/ports-and-context)** - Understand DiscomfortPorts and Context
 - **[API Reference](./api/discomfort-class)** - Complete method documentation
-- **[Examples](./examples/parameter-sweep)** - Real-world usage patterns
+- **[Create your first workflow](./examples/create-first-workflow)** - Master the basics before advanced techniques
+- **[Explore examples](./examples/parameter-sweep)** - Real-world usage patterns
 
 ## 🎯 Perfect For
 

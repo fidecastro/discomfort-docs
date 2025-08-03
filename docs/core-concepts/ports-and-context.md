@@ -248,7 +248,7 @@ with discomfort.Context() as inference_context:
 
 Now that you understand ports and context:
 
-- **[Try the Basic Tutorial](../tutorial-basics/create-first-workflow)** - Hands-on practice
-- **[Parameter Sweep Example](../examples/parameter-sweep)** - See practical usage examples
+- **[Watch the Basic Tutorial](../tutorial-basics/running-a-workflow)** - Hands-on practice
+- **[Parameter Sweep Example](../examples/parameter-sweep)** - More advanced practical usage example
 - **[API Reference](../api/discomfort-class)** - Explore the full Discomfort API
 - **[Workflow Tools](../api/workflow-tools)** - Learn about workflow manipulation 
