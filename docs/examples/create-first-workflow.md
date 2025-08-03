@@ -1,6 +1,6 @@
 # Create Your First Discomfort Workflow
 
-In this tutorial, you'll create your first programmatic ComfyUI workflow using Discomfort. We'll build a simple image generation workflow that demonstrates the core concepts.
+In this example, you'll create from scratch your first programmatic ComfyUI workflow using Discomfort. We'll build a simple image generation workflow that demonstrates the core concepts.
 
 ## What You'll Learn
 
@@ -372,9 +372,9 @@ After running your completed script, you should have:
 
 ## Common Issues and Solutions
 
-### Issue: "ModuleNotFoundError: No module named 'discomfort'"
+### Issue: Same image being generated over and over
 
-**Solution**: Make sure Discomfort is installed correctly:
+**Solution**: The seed randomizer should not work using Discomfort. If you have this issue, **make sure you ALWAYS add a "seed" DiscomfortPort as an input**.
 ```bash
 cd ComfyUI/custom_nodes/discomfort
 pip install -r requirements.txt

@@ -72,10 +72,12 @@ with discomfort.Context() as context:
 Discomfort intelligently handles different data types:
 
 #### Pass-by-Value ("val")
-Simple data is stored directly:
+Simple data is stored directly. Examples:
 - **Images, latents** - Raw tensor data
 - **Strings, numbers** - Primitive values  
 - **Small objects** - Direct serialization
+
+A pass-by-value variable has its value directly stored by Discomfort. Upon a `context.save()` request it is serialized and stored in memory (disk or RAM); upon a `context.load()` request it is deserialized and can be handled via Python.
 
 ```python
 # These are stored as actual data
@@ -85,10 +87,14 @@ context.save("image", image_tensor)
 ```
 
 #### Pass-by-Reference ("ref")  
-Complex objects are stored as workflow graphs:
+Complex objects are stored as workflow graphs. Examples:
 - **Models** - Stored as the workflow that creates them
 - **CLIP encoders** - The nodes that load them
 - **VAE** - The complete loading pipeline
+
+Instead of handling its actual value, Discomfort relies on ComfyUI to recreate the variable from its original workflow recipe (that is, from the minimal ComfyUI workflow that would reproduce its value). This is a critical optimization step to avoid out-of-memory errors or unacceptable overhead for large variables such as model checkpoints or other tensors.
+
+A pass-by-reference variable thus _cannot be directly handled via Python_; to do that, you must change its pass-by rule on the `pass_by_rules.json` so that it is always passed as value. Note that this will likely create large bottlenecks in time, compute and memory, especially for large/complex workflows.
 
 ```python
 # This stores the WORKFLOW that creates the model, not the model itself
@@ -100,18 +106,26 @@ loaded_model = context.load("my_model")  # Runs the stored workflow
 
 ### 🧠 Type Rules Configuration
 
-You can customize which types use which storage method in `pass_by_rules.json`:
+You can customize which types use which storage method in `pass_by_rules.json`. The presets are as follows:
 
 ```json
 {
-    "MODEL": "ref",        // Models stored as workflows
-    "CLIP": "ref",         // CLIP encoders as workflows  
-    "VAE": "ref",          // VAE as workflows
-    "IMAGE": "val",        // Images as direct data
-    "LATENT": "val",       // Latents as direct data
-    "STRING": "val",       // Text as direct data
-    "INT": "val",          // Numbers as direct data
-    "FLOAT": "val"         // Decimals as direct data
+    "MODEL": "ref",        // Models passed by reference (workflow graphs)
+    "CLIP": "ref",         // CLIP models passed by reference  
+    "VAE": "ref",          // VAE models passed by reference
+    "CONDITIONING": "ref", // Conditioning passed by reference
+    "LATENT": "val",       // Latents passed by value (direct storage)
+    "IMAGE": "val",        // Images passed by value
+    "MASK": "val",         // Masks passed by value
+    "CONTROL_NET": "ref",  // ControlNet models passed by reference
+    "STRING": "val",       // Text passed by value
+    "INT": "val",          // Numbers passed by value
+    "FLOAT": "val",        // Decimals passed by value
+    "BOOLEAN": "val",      // Booleans passed by value
+    "TUPLE": "val",        // Tuples passed by value
+    "LIST": "val",         // Lists passed by value
+    "DICT": "val",         // Dictionaries passed by value
+    "ANY": "val"           // "ANY" type passed by value
 }
 ```
 
@@ -167,10 +181,10 @@ asyncio.run(main())
 # Use context managers for automatic cleanup
 with discomfort.Context() as context:
     # Your workflow code here
-    pass  # Automatic cleanup
+    pass  # Automatic cleanup upon closing the 'with' clause 
 
 # Reuse heavy objects across runs
-context.save("model", my_model)  # Load once
+context.save("model_name", my_model)  # Load once
 for i in range(10):
     await discomfort.run(["workflow.json"], context=context)  # Reuse model
 
@@ -185,10 +199,12 @@ context.save("background_image", bg_img)
 context = discomfort.Context()
 # ... use context ...
 # Missing: context.shutdown() - will leak resources!
+# Instead, use a `with` clause to ensure it always shuts down the context
 
-# Don't reload heavy objects unnecessarily
+# Avoid switching heavy objects unnecessarily
 for i in range(10):
-    context.save("model", my_model)  # Wasteful - load once outside loop
+    my_model = f"model{i}.safetensors"
+    context.save("model_name", my_model)  # Possibly wasteful; try clustering model use
     await discomfort.run(["workflow.json"], context=context)
 
 # Don't use generic unique_ids
@@ -211,15 +227,18 @@ print(f"Items: {usage['stored_keys_count']}")
 Adjust memory limits in `workflow_context.json`:
 ```json
 {
-    "MAX_RAM_PERCENT": 50,    // Use 50% of system RAM
+    "MAX_RAM_PERCENT": 50,    // Use 50% of free system RAM
     "MAX_RAM_GB": 16,         // Or cap at 16GB
     "CONTEXTS_DIR_NAME": "contexts"
 }
 ```
+Note: if `MAX_RAM_PERCENT` is present, then its value is used and the `MAX_RAM_GB` data is ignored. Use one or the other.
 
 ## Advanced Context Features
 
 ### Export Persistent Data
+Context data is handled internally with `cloudpickle`. Exported data should correspondingly be in .pkl format.
+
 ```python
 # Make temporary data permanent
 context.export_data("final_result", "/path/to/permanent/file.pkl")
