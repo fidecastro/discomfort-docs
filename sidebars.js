@@ -15,7 +15,7 @@ const sidebars = {
   mainSidebar: [
     'intro',
     'installation',
-    
+
     {
       type: 'category',
       label: 'Core Concepts',
@@ -23,15 +23,17 @@ const sidebars = {
         'core-concepts/ports-and-context',
       ],
     },
-    
+
     {
       type: 'category',
       label: 'Tutorial - Basics',
       items: [
-        'tutorial-basics/create-first-workflow',
+        'tutorial-basics/running-a-workflow',
+        'tutorial-basics/using-partial-workflows',
+        'tutorial-basics/a-simple-loop-on-comfy',
       ],
     },
-    
+
     {
       type: 'category',
       label: 'API Reference',
@@ -43,11 +45,12 @@ const sidebars = {
         'api/nodes',
       ],
     },
-    
+
     {
       type: 'category',
       label: 'Examples',
       items: [
+        'examples/create-first-workflow', // <-- This was moved
         'examples/parameter-sweep',
       ],
     },

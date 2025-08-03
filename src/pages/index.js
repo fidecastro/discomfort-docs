@@ -23,7 +23,7 @@ function HomepageHeader() {
         <div className={styles.buttons}>
           <Link
             className="button button--secondary button--lg"
-            to="/docs/intro">
+            to="/docs/tutorial-basics/running-a-workflow">
             Get Started - 5min ⏱️
           </Link>
           <Link
@@ -41,7 +41,6 @@ function HomepageHeader() {
     </header>
   );
 }
-
 function FeatureHighlight({title, description, code}) {
   return (
     <div className="col col--6 margin-bottom--lg">
