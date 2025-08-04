@@ -124,7 +124,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} Discomfort Project. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} Discomfort AI. Built with Docusaurus.`,
       },
       prism: {
         theme: lightCodeTheme,
