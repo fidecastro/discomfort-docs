@@ -4,32 +4,26 @@ import styles from './styles.module.css';
 
 const FeatureList = [
   {
-    title: 'Programmatic Control',
+    title: 'ComfyUI + Python = 🔥',
     description: (
       <>
-        Take full control of ComfyUI workflows with Python. Execute workflows 
-        programmatically with loops, conditionals, and complex logic that goes 
-        beyond traditional node-based execution.
+        Execute workflows with loops, conditionals, and logic that can't be done with nodes.
       </>
     ),
   },
   {
-    title: 'State Management',
+    title: 'Stateful ComfyUI',
     description: (
       <>
-        Preserve data between workflow executions with automatic state management.
-        Pass-by-value for images and primitives, pass-by-reference for models and 
-        heavy objects - all handled automatically.
+        Preserve data between workflow runs with minimal effort and time/compute overhead.
       </>
     ),
   },
   {
-    title: 'Workflow Composition',
+    title: 'No more spaghetti!',
     description: (
       <>
-        Break free from monolithic workflows. Stitch together partial workflows,
-        create reusable components, and build complex pipelines from simple building blocks.
-        No more spaghetti workflows!
+        Create reusable components, run partial workflows, and build complex pipelines from simple building blocks.
       </>
     ),
   },
