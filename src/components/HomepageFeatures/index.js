@@ -55,7 +55,6 @@ export default function HomepageFeatures() {
             <Feature key={idx} {...props} />
           ))}
         </div>
-        
         <div className={styles.useCasesSection}>
           <h2 className="text--center margin-top--xl margin-bottom--lg">Perfect For</h2>
           <div className="row">

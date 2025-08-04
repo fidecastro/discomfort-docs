@@ -3,7 +3,7 @@
  * and scoped locally.
  */
 
-.heroBanner {
+ .heroBanner {
   padding: 4rem 0;
   text-align: center;
   position: relative;
@@ -24,6 +24,13 @@
   margin-top: 2rem;
 }
 
+.subtitle {
+  font-size: 1.5rem;
+  color: white !important;
+  font-weight: bold;
+  margin-top: 1rem;
+}
+
 @media screen and (max-width: 996px) {
   .heroBanner {
     padding: 2rem;
@@ -38,10 +45,8 @@
     width: 150px;
     height: 150px;
   }
-}
-
-.subtitle {
-  font-size: 2rem;
-  color: white;
-  margin-top: 1rem;
+  
+  .subtitle {
+    font-size: 1.25rem;
+  }
 }

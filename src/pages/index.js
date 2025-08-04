@@ -39,12 +39,13 @@ function HomepageHeader() {
           </Link>
         </div>
         <div className="text--center margin-top--md">
-          <p>10x faster development of ComfyUI pipelines. MIT License.</p>
+          <h2 className={styles.subtitle}>10x faster development of ComfyUI pipelines. MIT License.</h2>
         </div>
       </div>
     </header>
   );
 }
+
 function FeatureHighlight({title, description, code}) {
   return (
     <div className="col col--6 margin-bottom--lg">
