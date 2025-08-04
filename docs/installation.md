@@ -68,7 +68,6 @@ Discomfort requires several Python packages for full functionality:
 - **`backoff`** - Retry logic for robust operations
 
 ### Optional Dependencies
-- **`openai`** - For AI-powered workflow features (if used)
 - **`filelock`** - Thread-safe file operations
 - **`numpy`** - Numerical operations
 
