@@ -105,8 +105,8 @@ const config = {
                 href: 'https://github.com/fidecastro/comfyui-discomfort/issues',
               },
               {
-                label: 'Discord',
-                href: 'https://discord.gg/comfyui',
+                label: 'Discord (Distillery)',
+                href: 'https://discord.gg/f8E66F46Qn',
               },
             ],
           },
