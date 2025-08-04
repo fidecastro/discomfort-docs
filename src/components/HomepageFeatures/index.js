@@ -23,7 +23,7 @@ const FeatureList = [
     title: 'No more spaghetti!',
     description: (
       <>
-        Create reusable components, run partial workflows, and build complex pipelines from simple building blocks.
+        Run partial workflows and build complex pipelines from simple building blocks.
       </>
     ),
   },
