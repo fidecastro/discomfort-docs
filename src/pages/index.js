@@ -3,192 +3,135 @@ import clsx from 'clsx';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
+import HomepageFeatures from '@site/src/components/HomepageFeatures';
+import CodeBlock from '@theme/CodeBlock';
+
 import styles from './index.module.css';
-
-const FeatureList = [
-  {
-    title: 'Programmatic Control',
-    description: (
-      <>
-        Take full control of ComfyUI workflows with Python. Execute workflows
-        programmatically with loops, conditionals, and complex logic that goes
-        beyond traditional node-based execution.
-      </>
-    ),
-  },
-  {
-    title: 'State Management',
-    description: (
-      <>
-        Preserve data between workflow executions with automatic state management.
-        Pass-by-value for images and primitives, pass-by-reference for models and
-        heavy objects - all handled automatically.
-      </>
-    ),
-  },
-  {
-    title: 'Workflow Composition',
-    description: (
-      <>
-        Break free from monolithic workflows. Stitch together partial workflows,
-        create reusable components, and build complex pipelines from simple building blocks.
-        No more spaghetti workflows!
-      </>
-    ),
-  },
-];
-
-function Feature({title, description}) {
-  return (
-    <div className={clsx('col col--4')}>
-      <div className="text--center padding-horiz--md">
-        <h3>{title}</h3>
-        <p>{description}</p>
-      </div>
-    </div>
-  );
-}
 
 function HomepageHeader() {
   const {siteConfig} = useDocusaurusContext();
   return (
     <header className={clsx('hero hero--primary', styles.heroBanner)}>
       <div className="container">
-        <h1 className="hero__title">{siteConfig.title}</h1>
-        <p className="hero__subtitle">{siteConfig.tagline}</p>
+        <img
+          src="img/discomfort-logo.png"
+          alt="Discomfort Logo"
+          className={styles.heroLogo}
+          width="200"
+          height="200"
+        />
+        <h1 className="hero__title">Control ComfyUI with Python</h1>
         <div className={styles.buttons}>
           <Link
             className="button button--secondary button--lg"
-            to="/docs/intro">
+            to="/docs/tutorial-basics/running-a-workflow">
             Get Started - 5min ⏱️
           </Link>
+          <Link
+            className="button button--primary button--lg margin-left--md"
+            to="/docs/api/discomfort-class">
+            API Reference
+          </Link>
+          <Link
+            className="button button--success button--lg margin-left--md"
+            to="https://www.paypal.com/donate/?hosted_button_id=3A23MDRAT9EKY">
+            ❤️ Support the Project
+          </Link>
+        </div>
+        <div className="text--center margin-top--md">
+          <p>10x faster development of ComfyUI pipelines. MIT License.</p>
         </div>
       </div>
     </header>
   );
 }
-
-function HomepageFeatures() {
+function FeatureHighlight({title, description, code}) {
   return (
-    <section className={styles.features}>
+    <div className="col col--6 margin-bottom--lg">
+      <div className="card">
+        <div className="card__header">
+          <h3>{title}</h3>
+        </div>
+        <div className="card__body">
+          <p>{description}</p>
+          <CodeBlock language="python">{code}</CodeBlock>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function CodeExamples() {
+  return (
+    <section className="margin-top--lg margin-bottom--lg">
       <div className="container">
+        <h2 className="text--center margin-bottom--lg">See Discomfort in Action</h2>
         <div className="row">
-          {FeatureList.map((props, idx) => (
-            <Feature key={idx} {...props} />
-          ))}
-        </div>
+          <FeatureHighlight
+            title="Iterative Workflows with State"
+            description="Run workflows with loops and persistent state management"
+            code={`async def main():
+    discomfort = await Discomfort.create()
+    
+    with discomfort.Context() as context:
+        for i in range(10):
+            context.save("seed", 1000 + i)
+            context.save("cfg", 4.0 + i * 0.5)
+            await discomfort.run(["workflow.json"], 
+                               context=context)`}
+          />
+          <FeatureHighlight
+            title="Workflow Stitching"
+            description="Combine multiple partial workflows programmatically"
+            code={`workflows = [
+    "load_model.json",
+    "img2img_latent.json", 
+    "ksampler.json"
+]
 
-        <div className={styles.architectureSection}>
-          <h2 className="text--center margin-top--xl margin-bottom--lg">How It Works</h2>
-          <div className="row">
-            <div className="col col--4">
-              <div className="card">
-                <div className="card__header">
-                  <h3>DiscomfortPorts</h3>
-                </div>
-                <div className="card__body">
-                  <p>
-                    Special nodes that act as inputs and outputs for your workflows.
-                    Simply add them to existing ComfyUI workflows to make them Discomfort-compatible.
-                  </p>
-                  <ul>
-                    <li><strong>INPUT mode:</strong> Inject data from Python</li>
-                    <li><strong>OUTPUT mode:</strong> Extract results to Python</li>
-                    <li><strong>PASSTHRU mode:</strong> Pass data unchanged</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div className="col col--4">
-              <div className="card">
-                <div className="card__header">
-                  <h3>Context Management</h3>
-                </div>
-                <div className="card__body">
-                  <p>
-                    Automatic data persistence and retrieval with intelligent storage strategies.
-                    RAM for speed, disk for large objects, all transparent to you.
-                  </p>
-                  <ul>
-                    <li><strong>Hybrid storage:</strong> RAM + disk fallback</li>
-                    <li><strong>Type-aware:</strong> Different strategies per data type</li>
-                    <li><strong>Thread-safe:</strong> Multiple contexts, no conflicts</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div className="col col--4">
-              <div className="card">
-                <div className="card__header">
-                  <h3>Self-Managed Comfy Instance</h3>
-                </div>
-                <div className="card__body">
-                  <p>
-                    Discomfort runs its own ComfyUI server instance via ComfyConnector, ensuring isolated and conflict-free workflow execution.
-                  </p>
-                  <ul>
-                    <li><strong>Isolated Runs:</strong> Avoids conflicts with user-run instances.</li>
-                    <li><strong>Full Lifecycle Control:</strong> Programmatically start, run, and shut down.</li>
-                    <li><strong>Serverless Ready:</strong> Designed for automated, hands-off operation.</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+stitched = discomfort.Tools.stitch_workflows(workflows)
+await discomfort.run([stitched["stitched_workflow"]])`}
+          />
+          <FeatureHighlight
+            title="Conditional Execution"
+            description="Branch workflow execution based on runtime conditions"
+            code={`for i in range(10):
+    if i % 2 == 0:
+        # Use empty latent
+        await discomfort.run(["empty_latent.json"])
+    else:
+        # Use img2img
+        context.save("input_image", image)
+        await discomfort.run(["img2img.json"])`}
+          />
+          <FeatureHighlight
+            title="Data Type Handling"
+            description="Automatic pass-by-value and pass-by-reference for different data types"
+            code={`# Images pass by value (direct storage)
+context.save("my_image", image_tensor)
 
-        <div className={styles.useCasesSection}>
-          <h2 className="text--center margin-top--xl margin-bottom--lg">Perfect For</h2>
-          <div className="row">
-            <div className="col col--3">
-              <div className="card">
-                <div className="card__body text--center">
-                  <h4>Iterative Refinement</h4>
-                  <p>Progressively improve outputs through multiple passes</p>
-                </div>
-              </div>
-            </div>
-            <div className="col col--3">
-              <div className="card">
-                <div className="card__body text--center">
-                  <h4>Parameter Sweeps</h4>
-                  <p>Test multiple configurations automatically</p>
-                </div>
-              </div>
-            </div>
-            <div className="col col--3">
-              <div className="card">
-                <div className="card__body text--center">
-                  <h4>Batch Processing</h4>
-                  <p>Process large datasets with custom logic</p>
-                </div>
-              </div>
-            </div>
-            <div className="col col--3">
-              <div className="card">
-                <div className="card__body text--center">
-                  <h4>A/B Testing</h4>
-                  <p>Compare different approaches systematically</p>
-                </div>
-              </div>
-            </div>
-          </div>
+# Models pass by reference (workflow graphs)
+context.save("my_model", model_workflow)
+
+# Load any type seamlessly
+loaded_data = context.load("my_image")`}
+          />
         </div>
       </div>
     </section>
   );
 }
 
-// This is the key fix - export a complete page component with Layout
 export default function Home() {
   const {siteConfig} = useDocusaurusContext();
   return (
     <Layout
-      title={`Hello from ${siteConfig.title}`}
-      description="Programmatic ComfyUI workflows with loops, conditionals, and state management">
+      title={`${siteConfig.title} - Programmatic ComfyUI Workflows`}
+      description="Discomfort enables programmatic control of ComfyUI workflows with loops, conditionals, and state management">
       <HomepageHeader />
       <main>
         <HomepageFeatures />
+        <CodeExamples />
       </main>
     </Layout>
   );
