@@ -16,8 +16,8 @@ const config = {
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'fidecastro', // Usually your GitHub org/user name.
-  projectName: 'comfyui-discomfort', // Usually your repo name.
+  organizationName: 'Distillery-Dev', // Usually your GitHub org/user name.
+  projectName: 'Discomfort', // Usually your repo name.
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -39,7 +39,7 @@ const config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/fidecastro/comfyui-discomfort/tree/main/docs/',
+            'https://github.com/Distillery-Dev/Discomfort/tree/main/docs/',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
@@ -71,7 +71,7 @@ const config = {
             label: 'Documentation',
           },
           {
-            href: 'https://github.com/fidecastro/comfyui-discomfort',
+            href: 'https://github.com/Distillery-Dev/Discomfort',
             label: 'GitHub',
             position: 'right',
           },
@@ -102,7 +102,7 @@ const config = {
             items: [
               {
                 label: 'GitHub Issues',
-                href: 'https://github.com/fidecastro/comfyui-discomfort/issues',
+                href: 'https://github.com/Distillery-Dev/Discomfort/issues',
               },
               {
                 label: 'Discord (Distillery)',
@@ -115,7 +115,7 @@ const config = {
             items: [
               {
                 label: 'GitHub',
-                href: 'https://github.com/fidecastro/comfyui-discomfort',
+                href: 'https://github.com/Distillery-Dev/Discomfort',
               },
               {
                 label: 'ComfyUI',

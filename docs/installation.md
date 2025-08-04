@@ -27,7 +27,7 @@ cd ComfyUI/custom_nodes
 
 2. Clone the Discomfort repository:
 ```bash
-git clone https://github.com/fidecastro/comfyui-discomfort.git discomfort
+git clone https://github.com/Distillery-Dev/Discomfort.git discomfort
 ```
 
 3. Install Python dependencies:

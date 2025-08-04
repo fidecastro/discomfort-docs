@@ -62,7 +62,7 @@ Just add `DiscomfortPort` nodes to your existing ComfyUI workflows - no complex 
 
 ```bash
 cd ComfyUI/custom_nodes
-git clone https://github.com/fidecastro/comfyui-discomfort.git discomfort
+git clone https://github.com/Distillery-Dev/Discomfort.git discomfort
 cd discomfort
 pip install -r requirements.txt
 ```
